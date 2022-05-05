@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Header } from '../../components';
+import { Navbar, Header, Featured } from '../../components';
 import './Home.css';
 
 export default function Home() {
@@ -7,7 +7,10 @@ export default function Home() {
     <div>
       <Navbar />
       <Header />
-      <div className="homeContainer" />
+      <div className="homeContainer">
+        <Featured />
+        <h1 className="homeTitle">Browse by property type</h1>
+      </div>
     </div>
   );
 }
