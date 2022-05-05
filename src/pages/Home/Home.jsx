@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Navbar from '../../components/Navbar/Navbar';
+import { Navbar, Header } from '../../components';
 import './Home.css';
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
     <div>
       <Navbar />
       <Header />
-      <div className="homeContainer"></div>
+      <div className="homeContainer" />
     </div>
   );
 }
