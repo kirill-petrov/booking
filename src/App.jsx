@@ -1,10 +1,25 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home, Hotel, List } from './components';
 
 function App() {
   return (
-    <div>
-      <pre>the react-app is running</pre>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/hotels"
+          element={<List />}
+        />
+        <Route
+          path="/hotels/:id"
+          element={<Hotel />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
