@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Hotel, List } from './components';
+import { Home, Hotel, List } from './pages';
+import './App.css';
 
 function App() {
   return (
