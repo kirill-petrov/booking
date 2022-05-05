@@ -1,5 +1,11 @@
 import React from 'react';
-import { Navbar, Header, Featured, PropertyList } from '../../components';
+import {
+  Navbar,
+  Header,
+  Featured,
+  PropertyList,
+  FeaturedProperties,
+} from '../../components';
 import './Home.css';
 
 export default function Home() {
@@ -12,6 +18,7 @@ export default function Home() {
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
+        <FeaturedProperties />
       </div>
     </div>
   );
