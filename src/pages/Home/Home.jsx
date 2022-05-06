@@ -5,6 +5,7 @@ import {
   Featured,
   PropertyList,
   FeaturedProperties,
+  MailList,
 } from '../../components';
 import './Home.css';
 
@@ -19,6 +20,7 @@ export default function Home() {
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
         <FeaturedProperties />
+        <MailList />
       </div>
     </div>
   );
