@@ -10,6 +10,7 @@ import {
   faTaxi,
   faCalendarDays,
   faUser,
+  faFerry,
 } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
@@ -17,9 +18,11 @@ import { format } from 'date-fns';
 import './Header.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export default function Header({ type }) {
+  const [destination, setDestination] = useState('');
   const [isOpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -35,11 +38,17 @@ export default function Header({ type }) {
     room: 1,
   });
 
+  const navigate = useNavigate();
+
   const handleOption = (name, operation) => {
     setOptions((prev) => ({
       ...prev,
       [name]: operation === 'inc' ? options[name] + 1 : options[name] - 1,
     }));
+  };
+
+  const handleSearch = () => {
+    navigate('/hotels', { state: { destination, date, options } });
   };
 
   return (
@@ -63,7 +72,7 @@ export default function Header({ type }) {
             <span>Car rentals</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
+            <FontAwesomeIcon icon={faFerry} />
             <span>Attractions</span>
           </div>
           <div className="headerListItem">
@@ -87,6 +96,7 @@ export default function Header({ type }) {
             >
               Sign In / Register
             </button>
+
             <div className="headerSearch headerIcon">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} />
@@ -94,14 +104,16 @@ export default function Header({ type }) {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
-              <div
-                className="headerSearchItem"
-                onClick={() => setOpenDate(!isOpenDate)}
-              >
+
+              <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} />
-                <span className="headerSearchText">
+                <span
+                  className="headerSearchText"
+                  onClick={() => setOpenDate(!isOpenDate)}
+                >
                   {`${format(date[0].startDate, 'E, MMM d')}`} —{' '}
                   {`${format(date[0].endDate, 'E, MMM d')}`}
                 </span>
@@ -112,15 +124,17 @@ export default function Header({ type }) {
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                     className="date"
+                    minDate={new Date()}
                   />
                 )}
               </div>
-              <div
-                className="headerSearchItem"
-                onClick={() => setOpenOptions(!isOpenOptions)}
-              >
+
+              <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faUser} />
-                <span className="headerSearchText">
+                <span
+                  className="headerSearchText"
+                  onClick={() => setOpenOptions(!isOpenOptions)}
+                >
                   {`${options.adult}`} adults ・{`${options.children}`} children
                   ・ {`${options.room}`} room
                 </span>
@@ -194,10 +208,12 @@ export default function Header({ type }) {
                   </div>
                 )}
               </div>
+
               <div className="headerSearchItem">
                 <button
                   type="button"
                   className="headerBtn"
+                  onClick={handleSearch}
                 >
                   Search
                 </button>

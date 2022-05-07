@@ -13,4 +13,3 @@ cp -an ../cra-boilerplate/ ./
 ```bash
 rm -rf .git
 ```
-# booking
