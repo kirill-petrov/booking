@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import { useLocation } from 'react-router-dom';
-import { Header, Navbar } from '../../components';
+import { Header, Navbar, SearchItem } from '../../components';
 import './List.css';
 
 export default function List() {
@@ -106,7 +106,16 @@ export default function List() {
             </div>
             <button type="button">Search</button>
           </div>
-          <div className="listResult">qwe</div>
+          <div className="listResult">
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+          </div>
         </div>
       </div>
     </>
