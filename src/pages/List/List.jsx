@@ -11,12 +11,14 @@ import './List.css';
 export default function List() {
   const location = useLocation();
   // const [destination, setDestination] = useState(location.state.destination);
+  const { destination } = location.state;
+  const { options } = location.state;
+
   const [date, setDate] = useState(location.state.date);
-  const [options, setOptions] = useState(location.state.options);
   const [isOpenDate, setOpenDate] = useState(false);
 
   return (
-    <>
+    <div>
       <Navbar />
       <Header type="list" />
       <div className="listContainer">
@@ -26,18 +28,11 @@ export default function List() {
             <div className="lsItem">
               <label>Destination</label>
               <input
-                // placeholder={destination}
+                placeholder={destination}
                 type="text"
               />
               <label>Check-in date</label>
-              {/* <input
-                // placeholder={destination}
-                type="date"
-              /> */}
-              <span
-                // className="headerSearchText"
-                onClick={() => setOpenDate(!isOpenDate)}
-              >
+              <span onClick={() => setOpenDate(!isOpenDate)}>
                 {`${format(date[0].startDate, 'E, MMM d')}`} —{' '}
                 {`${format(date[0].endDate, 'E, MMM d')}`}
               </span>
@@ -118,6 +113,6 @@ export default function List() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

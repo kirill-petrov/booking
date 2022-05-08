@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home, Hotel, List } from './pages';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -23,5 +23,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
